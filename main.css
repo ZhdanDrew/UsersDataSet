@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+input, button {
+    font-size: 30px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .input-wrapper {
+    width: 50%;
+    padding: 20px;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#users-wrapper {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.user-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 3px dashed grey;
+    border-radius: 20px;
+    gap: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.user-item .user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.user-item div {
+    width: 40%;
+}
+
+.user-item .technologies {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sort-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort-wrapper input {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.sort-wrapper label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.blue {
+    color: blueviolet
+}
+
+#search-input {
+    font-size: 20px;
+    padding: 10px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#search-button {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #45a049;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.7);
+}
+
+.delete-user-button {
+    font-size: 16px;
+    padding: 8px 16px;
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-user-button:hover {
+    background-color: #ff3333;
+}
