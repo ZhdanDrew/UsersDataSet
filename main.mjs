@@ -96,74 +96,79 @@ function renderUsers(users) {
             </div>
         </div>
     `;
-    // <button class="delete-user-button" id="delete-user-${i}">Delete</button>
-    // const deleteButton = document.getElementById(`delete-user-${i}`);
+    const deleteButton = document.createElement("button");
 
-    setTimeout(() => {
-      const deleteButton = document.createElement("button");
+    console.log(deleteButton, "deleteButton");
 
-      console.log(deleteButton, "deleteButton");
+    deleteButton.textContent = "🗑️";
+    deleteButton.className = "delete-user-button"; 
+    deleteButton.onclick = () => {
+      console.log(`Delete user:`, user);
 
-      deleteButton.textContent = "Delete";
+      const result = USERS.filter((u) => user.fullname !== u.fullname);
 
-      deleteButton.onclick = () => {
-        console.log(`Delete user:`, user);
+      renderUsers(result);
+    };
 
-        const result = USERS.filter((u) => user.fullname !== u.fullname);
-
-        renderUsers(result);
-      };
-
-      const userElement = document.getElementById(`user-${i}`);
-      userElement.appendChild(deleteButton);
-    }, 1000);
+    const userElement = document.getElementById(`user-${i}`);
+    userElement.appendChild(deleteButton);
   });
 }
 
+
 renderUsers(USERS);
 
+const sortByNameCheckbox = document.getElementById("sort-by-name");
+
+sortByNameCheckbox.onchange = () => {
+  if (sortByNameCheckbox.checked) {
+    const usersToSort = [...USERS];
+
+    const sortedUsers = usersToSort.sort((user1, user2) =>
+      user1.fullname.localeCompare(user2.fullname)
+    );
+
+    renderUsers(sortedUsers);
+  } else {
+    renderUsers(USERS);
+  }
+};
+
+const burgerToggle = document.getElementById("burger-toggle");
+
+burgerToggle.addEventListener("change", () => {
+    const burgerContent = document.querySelector(".burger-content");
+    burgerContent.style.display = burgerToggle.checked ? "flex" : "none";
+});
 
 
+const sortBySalaryCheckboxBurger = document.getElementById("sort-by-salary");
+const sortByNameCheckboxBurger = document.getElementById("sort-by-name");
 
+sortBySalaryCheckboxBurger.addEventListener("change", () => {
+    if (sortBySalaryCheckboxBurger.checked) {
+        const usersToSort = [...USERS];
 
-//HW
-function uniqueElements(arr) {
-const uniqueMap = {};
-const uniqueArray = [];
+        const sortedUsers = usersToSort.sort(
+            (user1, user2) => user1.salary - user2.salary
+        );
 
-arr.forEach(element => {
-    if (!uniqueMap[element]) {
-    uniqueArray.push(element);
-    uniqueMap[element] = true;
+        renderUsers(sortedUsers);
+    } else {
+        renderUsers(USERS);
     }
 });
 
-return uniqueArray;
-}
+sortByNameCheckboxBurger.addEventListener("change", () => {
+    if (sortByNameCheckboxBurger.checked) {
+        const usersToSort = [...USERS];
 
-const inputArray = [1, 2, 3, 4, 2, 3, 5];
-console.log(uniqueElements(inputArray), "!!!")
+        const sortedUsers = usersToSort.sort((user1, user2) =>
+            user1.fullname.localeCompare(user2.fullname)
+        );
 
-
-function searchSum(arr, k) {
-    const numMap = {}; 
-
-    for (let i = 0; i < arr.length; i++) {
-    const complement = k - arr[i]; 
-
-    if (numMap[complement] !== undefined) {
-        return [complement, arr[i]]; 
+        renderUsers(sortedUsers);
+    } else {
+        renderUsers(USERS);
     }
-
-
-    numMap[arr[i]] = i;
-    }
-
-    return null; 
-}
-
-const inputArray1 = [1, 2, 3, 4, 5];
-const targetSum = 9;
-const result = searchSum(inputArray1, targetSum);
-
-console.log(result);
+});

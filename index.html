@@ -8,16 +8,28 @@
 </head>
 <body>
     <main>
+        <div class="burger-menu">
+            <input type="checkbox" id="burger-toggle">
+            <label for="burger-toggle">&#9776; Sort By</label>
+            <div class="burger-content">
+                <div class="sort-wrapper">
+                    <label for="sort-by-salary">
+                        <input id="sort-by-salary" type="checkbox" />
+                        By salary
+                    </label>
+                </div>
+                <div class="sort-wrapper">
+                    <label for="sort-by-name">
+                        <input id="sort-by-name" type="checkbox" />
+                        By name
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <div class="input-wrapper">
             <input type="text" id="search-input" />
             <button id="search-button">Search</button>
-        </div>
-
-        <div class="sort-wrapper">
-            <label for="sort-by-salary">
-                <input id="sort-by-salary" type="checkbox" />
-                By salary
-            </label>
         </div>
 
         <div id="users-wrapper"></div>
