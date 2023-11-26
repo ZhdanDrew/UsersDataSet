@@ -134,6 +134,8 @@ sortByNameCheckbox.onchange = () => {
   }
 };
 
+
+
 const burgerToggle = document.getElementById("burger-toggle");
 
 burgerToggle.addEventListener("change", () => {
@@ -165,6 +167,22 @@ sortByNameCheckboxBurger.addEventListener("change", () => {
 
         const sortedUsers = usersToSort.sort((user1, user2) =>
             user1.fullname.localeCompare(user2.fullname)
+        );
+
+        renderUsers(sortedUsers);
+    } else {
+        renderUsers(USERS);
+    }
+});
+
+const sortByAgeCheckbox = document.getElementById("sort-by-age");
+
+sortByAgeCheckbox.addEventListener("change", () => {
+    if (sortByAgeCheckbox.checked) {
+        const usersToSort = [...USERS];
+
+        const sortedUsers = usersToSort.sort((user1, user2) =>
+            user1.age - user2.age
         );
 
         renderUsers(sortedUsers);
